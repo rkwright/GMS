@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: XMLEditor Plug-in
+Bundle-SymbolicName: com.geofx.xmleditor; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.geofx.xmleditor.Activator
+Bundle-Vendor: Geo-F/X
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.workbench.texteditor,
+ org.eclipse.ui.ide,
+ org.eclipse.core.resources,
+ org.eclipse.ui.views,
+ org.apache.xerces,
+ org.eclipse.jdt,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.ui
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.ui.views.contentoutline
+Export-Package: com.geofx.xmleditor,
+ com.geofx.xmleditor.format,
+ com.geofx.xmleditor.markers,
+ com.geofx.xmleditor.outline,
+ com.geofx.xmleditor.rules,
+ com.geofx.xmleditor.scanners,
+ com.geofx.xmleditor.xml

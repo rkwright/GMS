@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/com.geofx.gms/com.geofx.gms_1.0.0.jar"/>
+	<classpathentry kind="lib" path="/com.geofx.opengl.util/com.geofx.opengl.util_1.0.0.jar" sourcepath="C:/Sandbox_RKW/com.geofx.opengl.util/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

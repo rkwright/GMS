@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="buildJar" basedir=".">
+	
+	<!-- version number -->
+	<property name="VERSION" value="1.0.0" />
+	<property name="NAME" value="com.geofx.science.tempwave" />
+	<property name="bin.dir" value="bin" />
+	<property name="src.dir" value="src" />
+	
+	<target name="compile" description="Compiles all src classes, placing them in ${bin.dir}. ">
+		<!-- compiles all src classes -->
+		<javac	srcdir="${src.dir}"
+				destdir="${bin.dir}"
+				includes="**/*.*"
+				debug="true"
+				debuglevel="lines, vars, source"
+				includeantruntime="false"
+		/>
+		
+	</target>
+	
+	<target name="buildJar" depends="compile" description="Creates binary JAR for the Geo-F/X OpenGL View">
+		
+		<jar jarfile="${basedir}/${NAME}_${VERSION}.jar" manifest="META-INF/MANIFEST.MF">
+			<fileset dir="${bin.dir}">
+				<include name="**/*.class" />
+			</fileset>
+		</jar>
+		
+	</target>
+</project>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="com.geofx.opengl.glview" name="OpenGL View" schema="schema/com.geofx.opengl.glview.exsd"/>
+   <extension-point id="com.geofx.opengl.scene" name="OpenGL Scene" schema="schema/com.geofx.opengl.scene.exsd"/>
+</plugin>

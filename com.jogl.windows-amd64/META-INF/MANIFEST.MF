@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Windows-amd64
+Bundle-SymbolicName: com.jogl.windows-amd64
+Bundle-Version: 1.1.1
+Bundle-Vendor: JOGL
+Fragment-Host: com.jogl.all;bundle-version="1.1.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Eclipse-PlatformFilter: (& (osgi.os=win32) (osgi.arch=x86_64))

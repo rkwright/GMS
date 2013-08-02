@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="com.geofx.gms.module" name="GMS Module" schema="schema/com.geofx.gms.module.exsd"/>
+    
+   <extension
+        point="org.eclipse.ui.perspectives">
+     <perspective
+           class="com.geofx.gms.plugin.GMSPerspectiveFactory"
+           icon="icons/GMS_Logo.png"
+           id="com.geofx.gms.perspective"
+           name="GMS Perspective">
+     </perspective>
+   </extension>
+  
+   <extension
+         point="org.eclipse.ui.editors">    
+      <editor
+            name="GMS Multi-page Editor"
+            extensions="gms"
+            icon="icons/sample.gif"
+            contributorClass="com.geofx.gms.editor.GMSEditorContributor"
+            class="com.geofx.gms.editor.GMSEditor"
+            id="com.geofx.gms.editor.GMSEditor">
+      </editor>
+   	</extension>
+ 
+	<extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="GMS New Project Wizard"
+            id="com.geofx.gms">
+      </category>
+      <wizard
+            name="GMS New Project Wizard"
+            icon="icons/sample.gif"
+            category="com.geofx.gms"
+            class="com.geofx.gms.wizards.NewProjectWizard"
+            id="com.geofx.gms.wizards.NewProjectWizard">
+      </wizard>
+   </extension>
+        
+   	<extension
+    		id="com.geofx.gms.nature"
+         	name="GMS Nature"
+            point="org.eclipse.core.resources.natures">
+			<runtime>
+           		<run class="com.geofx.plugin.Nature"/> 
+      		</runtime> 	
+      </extension>
+	
+    <extension
+          point="com.geofx.gms.module">
+       <module
+             class="com.geofx.gms.datasets.LoadDatasetModule"
+             id="com.geofx.gms.datasets.LoadDatasetModule"
+             name="Load Dataset">
+       </module>
+       <module
+             class="com.geofx.gms.datasets.RollingGridModule"
+             id="com.geofx.gms.datasets.RollingGridModule"
+             name="RollingGrid Module">
+       </module>
+       <module
+             class="com.geofx.gms.viewers.PolylineGraphModule"
+             id="com.geofx.gms.viewers.ViewModule"
+             name="Polyline Graph Module">
+       </module>       
+       <module
+             class="com.geofx.gms.viewers.LineGraphModule"
+             id="com.geofx.gms.viewers.ViewModule"
+             name="Line Graph Module">
+       </module>
+    </extension>
+   	
+	 <extension
+          point="com.geofx.opengl.glview">
+       <glview
+             class="com.geofx.gms.viewers.PolylineGraph"
+             id="com.geofx.gms.viewers.PolylineGraph"
+             name="PolylineGraph View">
+       </glview>
+       <glview
+             class="com.geofx.gms.viewers.LineGraph"
+             id="com.geofx.gms.viewers.LineGraph"
+             name="LineGraph View">
+       </glview>
+     </extension>
+     
+  <!-- Sim Command extensions -->
+  <extension
+        point="org.eclipse.ui.commands">
+     <command
+           description="Restart the current simulation"
+           id="com.geofx.gms.commands.RestartSim"
+           name="Start">
+     </command>
+     <command
+           description="Termnates the current simulation"
+           id="com.geofx.gms.commands.TerminateSim"
+           name="Terminate">
+     </command>
+     <command
+           description="Pauses the current simulation"
+           id="com.geofx.gms.commands.PauseSim"
+           name="Pause">
+     </command>
+     <command
+           description="Resumes running of the current simulation"
+           id="com.geofx.gms.commands.ResumeSim"
+           name="Resume">
+     </command>
+     <command
+           description="Make a single step in the simulation"
+           id="com.geofx.gms.commands.SingleStepSim"
+           name="Single Step">
+     </command>
+  </extension>
+  
+  <!-- Sim menu -->
+  <extension
+        point="org.eclipse.ui.menus">
+     <menuContribution
+           allPopups="false"
+           locationURI="menu:org.eclipse.ui.main.menu">
+        <menu
+              id="com.geofx.gms.menu"
+              label="Sim Menu">
+           <command
+                 commandId="com.geofx.gms.commands.RestartSim"
+                 disabledIcon="icons/toolbar/restart_dis.gif"
+                 icon="icons/toolbar/restart_en.gif"
+                 label="Restart"
+                 style="push"
+                 tooltip="Restart the current simulation">
+           </command>
+           <command
+                 commandId="com.geofx.gms.commands.PauseSim"
+                 disabledIcon="icons/toolbar/suspend_dis.gif"
+                 icon="icons/toolbar/suspend_en.gif"
+                 label="Pause"
+                 style="push"
+                 tooltip="Pause the current simulation">
+           </command>
+            <command
+                    commandId="com.geofx.gms.commands.ResumeSim"
+                    disabledIcon="icons/toolbar/resume_dis.gif"
+                    icon="icons/toolbar/resume_en.gif"
+                    label="Resume"
+                    style="push"
+                    tooltip="Resume running the current simulation">
+              </command>
+            <command
+                  commandId="com.geofx.gms.commands.SingleStepSim"
+                  disabledIcon="icons/toolbar/stepover_dis.gif"
+                  icon="icons/toolbar/stepover_en.gif"
+                  label="Single Step"
+                  style="push"
+                  tooltip="Make a single step in the simulation">
+            </command>
+            <separator
+                  name="com.geofx.gms.separator"
+                  visible="true">
+            </separator>             
+              <command
+                 commandId="com.geofx.gms.commands.TerminateSim"
+                 icon="icons/toolbar/terminate_en.gif"
+                 disabledIcon="icons/toolbar/terminate_dis.gif"
+                 label="Terminate"
+                 style="push"
+                 tooltip="Terminate the current simulation">
+           </command>
+ 
+ 	   </menu>
+     </menuContribution>
+     
+     <!-- Sim toolbar -->
+     <menuContribution
+           allPopups="false"
+           locationURI="toolbar:org.eclipse.ui.main.toolbar">
+        <toolbar
+              id="com.geofx.gms.toolbar"
+              label="Sim Toolbar">
+           <command
+                 commandId="com.geofx.gms.commands.RestartSim"
+                 disabledIcon="icons/toolbar/restart_dis.gif"
+                 icon="icons/toolbar/restart_en.gif"
+                 label="Restart"
+                 style="push"
+                 tooltip="Restart the current simulation">
+           </command>
+           <command
+                 commandId="com.geofx.gms.commands.PauseSim"
+                 disabledIcon="icons/toolbar/suspend_dis.gif"
+                 icon="icons/toolbar/suspend_en.gif"
+                 label="Pause"
+                 style="push"
+                 tooltip="Pause the current simulation">
+           </command>
+          <command
+                 commandId="com.geofx.gms.commands.ResumeSim"
+                 disabledIcon="icons/toolbar/resume_dis.gif"
+                 icon="icons/toolbar/resume_en.gif"
+                 label="Resume"
+                 style="push"
+                 tooltip="Resume running the current simulation">
+           </command>
+          <command
+                commandId="com.geofx.gms.commands.SingleStepSim"
+                disabledIcon="icons/toolbar/stepover_dis.gif"
+                icon="icons/toolbar/stepover_en.gif"
+                label="Single Step"
+                style="push"
+                tooltip="Make a single step in the simulation">
+          </command>
+          <separator
+                name="com.geofx.gms.separator"
+                visible="true">
+          </separator>
+           <command
+                 commandId="com.geofx.gms.commands.TerminateSim"
+                 disabledIcon="icons/toolbar/terminate_dis.gif"
+                 icon="icons/toolbar/terminate_en.gif"
+                 label="Terminate"
+                 style="push"
+                 tooltip="Terminate the current simulation">
+           </command>
+ 
+    </toolbar>
+     </menuContribution>
+  </extension>
+ 
+  <!-- command handlers -->
+  <extension
+        point="org.eclipse.ui.handlers">
+     <handler
+           class="com.geofx.gms.controller.RestartSimHandler"
+           commandId="com.geofx.gms.commands.RestartSim">
+        <enabledWhen>
+        	<or>
+	        	<with 
+	        		variable="com.geofx.gms.commands.clockState">
+	           				<equals 
+	        					value="paused" >
+	        				</equals>
+	        	</with>
+	        	<with 
+	        		variable="com.geofx.gms.commands.clockState">
+	           				<equals 
+	        					value="stopped" >
+	        				</equals>
+	        	</with>	        
+	        </or>
+        </enabledWhen>
+     </handler>
+     <handler
+           class="com.geofx.gms.controller.TerminateSimHandler"
+           commandId="com.geofx.gms.commands.TerminateSim">
+        <enabledWhen>
+        	<or>
+	        	<with 
+	        		variable="com.geofx.gms.commands.clockState">
+	        			<equals 
+	        				value="running" >
+	        			</equals>
+	        	</with>
+	        	<with 
+	        		variable="com.geofx.gms.commands.clockState">
+	        			<equals 
+	        				value="paused" >
+	        			</equals>
+	        	</with>
+	        </or>
+        </enabledWhen>
+     </handler>
+     <handler
+           class="com.geofx.gms.controller.PauseSimHandler"
+           commandId="com.geofx.gms.commands.PauseSim">
+       <enabledWhen>
+        	<with 
+        		variable="com.geofx.gms.commands.clockState">
+        			<equals 
+        				value="running" >
+        			</equals>
+        	</with>
+        </enabledWhen>     
+       </handler>
+     <handler
+           class="com.geofx.gms.controller.ResumeSimHandler"
+           commandId="com.geofx.gms.commands.ResumeSim">
+   		  <enabledWhen>
+        	<with 
+        		variable="com.geofx.gms.commands.clockState">
+        			<equals 
+        				value="paused" >
+        			</equals>
+        	</with>
+        </enabledWhen>     
+     </handler>
+     <handler
+           class="com.geofx.gms.controller.SingleStepSimHandler"
+           commandId="com.geofx.gms.commands.SingleStepSim">
+   		  <enabledWhen>
+        	<with 
+        		variable="com.geofx.gms.commands.clockState">
+        			<equals 
+        				value="paused" >
+        			</equals>
+        	</with>
+        </enabledWhen>          
+     </handler>
+  </extension>
+  
+  <!-- Services Provider -->
+  <extension
+        point="org.eclipse.ui.services">
+     <sourceProvider
+           provider="com.geofx.gms.controller.ClockStateProvider">
+        <variable
+              name="com.geofx.gms.commands.clockState"
+              priorityLevel="workbench">
+        </variable>
+     </sourceProvider>
+  </extension>
+  
+</plugin>

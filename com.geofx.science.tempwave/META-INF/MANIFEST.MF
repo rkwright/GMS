@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tempwave
+Bundle-SymbolicName: com.geofx.science.tempwave;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.geofx.science.tempwave.Activator
+Bundle-Vendor: GEOFX
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.geofx.gms,
+ com.geofx.opengl.util;bundle-version="1.0.0"
+Import-Package: javax.vecmath
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
