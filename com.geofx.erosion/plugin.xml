@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.geofx.gms.module">
+      <module
+            class="com.geofx.erosion.Erosion1DModule"
+            id="com.geofx.erosion.Erosion1DModule"
+            name="Erosion 1D">
+      </module>
+   </extension>
+
+</plugin>

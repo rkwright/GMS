@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="OpenGL Demos"
+            id="com.geofx.opengl.scene">
+      </category>
+      <view
+            name="OpenGL Scene"
+            icon="icons/sample.gif"
+            category="com.geofx.opengl.scene"
+            class="com.geofx.opengl.scene.SceneView"
+            id="com.geofx.opengl.scene.views.GLScene">
+      </view>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="com.geofx.opengl.view.actionSet"
+            label="Select Scene"
+            visible="true">
+         <menu
+               id="sceneSelect"
+               label="&amp;OpenGL">
+            <separator name="selectGroup"/>
+         </menu>
+         <action
+               class="com.geofx.opengl.scene.SceneSelect"
+               icon="icons/ogl_sm_square.gif"
+               id="com.geofx.opengl.view.actions.SelectScene"
+               label="&amp;Select Scene"
+               menubarPath="sceneSelect/selectGroup"
+               toolbarPath="selectGroup"
+               tooltip="Select Scene"/>
+      </actionSet>
+   </extension>
+</plugin>

@@ -1,6 +1,11 @@
 
 public class ErosionDemo
 {
+	private static final double EROSION_PROP = 0.01;
+	private static double tot0;
+	private static double totLen;
+
+
 	/**
 	 * @param args
 	 */
@@ -30,6 +35,9 @@ public class ErosionDemo
 		{
 			erodeGrid(cells, edges);
 			
+			tot0 += cells[0];
+			totLen += cells[cells.length-1];
+
 			cells[0] = 0.0;
 			cells[cells.length-1] = 0.0;
 			
@@ -88,7 +96,35 @@ public class ErosionDemo
 
 	private static double eDeriv(double cur, double next, double prop)
 	{
-		return ((next-cur)/100.0) / prop;
+		return ((next-cur) * EROSION_PROP) / prop;
 	}
 
+	private static void dumpState(double[] cells, int i)
+	{
+		System.out.printf("%3d: ", i );
+
+		System.out.printf("%8.4f ", tot0);
+
+		for ( int n=1; n<cells.length-1; n++ )
+		{
+			System.out.printf("%8.4f ", cells[n]);
+		}
+
+		System.out.printf("%8.4f ", totLen);
+
+		System.out.printf("\n");
+	}
+
+	private static void dumpFinalState(double[] cells)
+	{
+		double nonEroded = 0;
+		for ( int n=1; n<cells.length-1; n++ )
+		{
+			nonEroded += cells[n];
+		}
+
+		System.out.printf("nonEroded = %9.5f, totalSystem = %9.5f", nonEroded, nonEroded+tot0+totLen );
+
+		System.out.printf("\n");
+	}
 }
